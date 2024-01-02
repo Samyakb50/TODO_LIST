@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title> TODO App </title>
+        <!-- viewport meta tag -->
+        <meta name="viewport" content="width = device-width, initial-scale = 1">
+        <!-- CDN of font awesome for icon -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+        <!-- css for jquery-ui   datepicker -->
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <!-- js for jquery-ui   datepicker -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+        <!-- css of the file -->
+        <link rel="stylesheet" type="text/css" href="todo.css">
+    </head>
+
+    <body>
+        <form id ="form" action="create-list" method="POST">
+            <h1> TODO App </h1>
+            <div id="description" class="border-top-grey">
+                <label for="description" class="common-heading"> Description </label> <br>
+                <textarea name="description" id="description-area" required cols="10" rows="3" placeholder="What do you need to do?"></textarea>
+            </div>
+            <div id="catogary-and-due-date-container" class="border-top-grey">
+                <div id="category">
+                    <label for="category" class="common-heading"> CATEGORY </label> <br>
+                    <select name="category" id="category" required>
+                        <option disabled selected> Choose a category </option>
+                        <option value="personal"> Personal </option>
+                        <option value="work"> Work </option>
+                        <option value="school"> School </option>
+                        <option value="cleaning"> Cleaning </option>
+                        <option value="other"> Other </option>
+                    </select>
+                </div>
+                <div id="due-date">
+                    <label for="datepicker" class="common-heading">DUE DATE</label> <br>
+                    <input type="text" name="duedate" id="datepicker" placeholder="dd-mm-yyyy" required>
+                </div>
+            </div>
+            <div id="button-container" class="border-top-grey">
+                <button id="add-button" class="common-button-style" type="submit">
+                    <!-- add icon -->
+                    <i class="fas fa-plus"></i>
+                    <span> &ensp;ADD TASK </span>
+                </button>
+            </div>
+        </form>
+
+        
+        <form id="task-container" action="delete-list" method="POST">
+            <button id="delete-button" class="common-button-style" type="submit">
+                <!-- delete icon -->
+                <i class="far fa-trash-alt"></i>
+                <span> &ensp;DELETE TASKS </span>
+            </button>
+
+            <% for(let i of task_list){ %>
+                <div class="task">
+                    <input class="checkbox" type="checkbox" name="delete" value="<%= i._id %>">
+                    <div id="div<%= i %>">
+                        <p class="common-description">
+                            <%= i.description %>
+                        </p>
+                        <i class="far fa-calendar-alt"></i>
+                        <span>
+                            <%= i.dueDate %>
+                        </span>
+                    </div>
+                    <button type="button" class="<%= i.category %>"> <%= i.category %> </button>
+                </div>
+            <% } %>
+        </form>
+        <script src="home.js"></script>
+    </body>
+
+</html>

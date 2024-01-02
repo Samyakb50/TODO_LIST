@@ -1,0 +1,242 @@
+body{
+    font-family: sans-serif;
+    background-color:  #f6f6f6;
+    letter-spacing: 2px;
+}
+
+#form{
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    border: 1px black solid;
+    background-color: white;
+}
+
+h1{
+    text-align: center;
+}
+
+h1:hover{
+    color:orange;
+}
+
+#description-area{
+    width: 100%;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+    background-color: inherit;
+}
+
+/* #description-area:valid{
+    // valid if there is some input
+    background-color: red;
+} */
+
+#description-area:focus{
+    /* // focus works only with form elements (elements which takes input)*/
+    background-color: rgb(226, 222, 222);
+}
+
+
+#catogary-and-due-date-container{
+    width: calc(100% - 50px);
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    /* border: 1px solid black; */
+}
+
+
+#category{
+    width: 50%;
+    height: 50px;
+    border-right: 2px solid grey;
+    margin-right: 5px;
+}
+
+#due-date{
+    width: 45%;
+}
+
+
+#category select, #due-date input{
+    border: none;
+    font-size: 1rem;
+    padding: 5px 0px;
+    cursor: pointer;
+    color: grey;
+    height: 30px;
+}
+
+#button-container{
+    /* text-align: center; */
+    padding: 25px 0px;
+}
+
+#add-button{
+    background-color: black;
+    margin-left: calc(50% - 220px);
+}
+
+
+
+
+
+                        /* Added lists */
+
+#task-container{
+    /* height: calc(50vh); */
+    display: flex;
+    flex-direction: column;
+    margin: 0px 25px;
+    position: relative;
+    /* overflow-y: scroll; */
+}
+
+#delete-button{
+    background-color: red;
+    position: absolute;
+    right: calc(50% - 220px);
+    top: -85px;
+    /* top: -calc(margin-bottom of upper form + padding-bottom of div + height of button) */
+}
+
+
+.task{
+    width: 51.8%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    align-items: center;
+    margin: auto;
+    border-top: 2px solid #6a6565;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.task:hover{
+    background-color: rgb(213, 247, 235);
+}
+
+.checkbox{
+    margin-top: 20px;
+    align-self: flex-start;
+    cursor: pointer;
+}
+
+/* // when checkbox is checked, it's immediate sibling should line-through */
+.checkbox:checked + div{
+    text-decoration: line-through;
+    background-color: #f7d3d3;
+}
+
+
+.task>div{
+    width: calc(100% - 150px);
+    height: auto;
+    margin-left: 10px;
+}
+
+.task>div>span{
+    color: gray;
+}
+
+.task>button{
+    /* align-self: flex-end; */
+    width: 100px;
+    border: none;
+    margin-left: auto;
+    /* margin-left: auto;    Important for my reference */
+    padding: 10px;
+    font-size: large;
+    letter-spacing: 2px;
+    color: white;
+}
+
+
+
+/* common classes */
+
+.border-top-grey{
+    border-top: 2px solid grey;
+    padding: 5px 25px;
+}
+
+.common-heading{
+    font-size: 1rem;
+    font-weight: 600;
+    color: #6a6565;
+}
+
+.common-description{
+    font-size: 1rem;
+    font-weight: 600;
+    color: #6a6565;
+    text-align: justify;
+    line-height: 1.3rem;
+}
+
+.common-button-style{
+    width: 210px;
+    height: 60px;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.common-button-style:active{
+    transform: scale(0.9);
+}
+
+.common-button-style:hover{
+    background-color: #0a6060 !important;
+}
+
+
+/* color of buttons on the basis of category */
+.personal{
+    background-color: #e30b0b;
+}
+
+.work{
+    background-color: #111173;
+}
+
+.school{
+    background-color: #0a6060;
+}
+
+.cleaning{
+    background-color: black;
+}
+
+.other{
+    background-color: orange;
+}
+
+
+            /* media query */
+
+@media screen and (max-width: 576px){
+    #add-button{
+        margin-left: calc(50% - 105px);
+    }
+    #delete-button{
+        right: calc(50% - 105px);
+        top: -70px;
+    }
+    #task-container{
+        margin-top: 60px;
+    }
+    .task>div{
+        width: 95%;
+    }
+}
